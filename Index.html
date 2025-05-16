@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .surprise-button {
+            text-decoration: none;
+            font-size: 24px;
+            color: white;
+            background-color: #ff4081;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 1.5s infinite;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .surprise-button:hover {
+            background-color: #e91e63;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <a class="surprise-button" href="https://youtu.be/-Gsu751X6ag?si=G99SrWsIemQ2-dRS" target="_blank">
+        Clique aqui para uma surpresa
+    </a>
+</body>
+</html>
