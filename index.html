@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra uma surpresa divertida clicando no botão!">
+    <meta property="og:title" content="Surpresa Incrível!">
+    <meta property="og:description" content="Clique para descobrir uma surpresa divertida!">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="URL_DO_SEU_GIF.gif"> <!-- pré-carrega o fundo -->
     <title>Surpresa!</title>
     <style>
         body {
@@ -10,28 +16,54 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            font-family: Arial, sans-serif;
+            background: url('URL_DO_SEU_GIF.gif') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', system-ui, Arial, sans-serif;
             margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6); /* fundo escuro semi-transparente */
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .surprise-button {
             text-decoration: none;
-            font-size: 24px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: white;
-            background-color: #ff4081;
+            background: linear-gradient(45deg, #ff4081, #f50057);
             border: none;
-            padding: 20px 40px;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
             animation: pulse 1.5s infinite;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: all 0.3s ease;
         }
 
         .surprise-button:hover {
-            background-color: #e91e63;
+            background: linear-gradient(45deg, #e91e63, #d81b60);
             transform: scale(1.1);
+        }
+
+        .surprise-button:active {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+
+        .surprise-button:focus {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
         }
 
         @keyframes pulse {
@@ -39,11 +71,34 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .surprise-button {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <a class="surprise-button" href="https://youtu.be/-Gsu751X6ag?si=G99SrWsIemQ2-dRS" target="_blank">
-        Clique aqui para uma surpresa
-    </a>
+    <div class="container">
+        <h1 id="dynamicTitle" style="color: white; text-align: center;">Pronto para algo especial?</h1>
+        <p style="color: white; font-size: 0.9rem; opacity: 0.8;">Obs: Sempre que ouvir lembre-se de mim!</p>
+        <a class="surprise-button" href="https://youtu.be/-Gsu751X6ag?si=G99SrWsIemQ2-dRS" target="_blank" role="button" aria-label="Abrir uma surpresa em uma nova aba">
+            Clique aqui para uma surpresa 🎉
+        </a>
+    </div>
+    <script>
+        const messages = ["Pronto para algo especial?", "Dedico essa para você!", "Uma surpresa espera!"];
+        let index = 0;
+        setInterval(() => {
+            document.getElementById('dynamicTitle').textContent = messages[index];
+            index = (index + 1) % messages.length;
+        }, 3000);
+    </script>
 </body>
 </html>
